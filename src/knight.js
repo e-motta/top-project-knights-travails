@@ -47,6 +47,17 @@ const Knight = (board) => {
   };
 
   const getShortestPath = (originCoord, targetCoord) => {
+    if (
+      originCoord.some((c) => c < 0 || c > 7)
+      || targetCoord.some((c) => c < 0 || c > 7)
+    ) {
+      throw RangeError('Coordinates must be between 0 and 7');
+    }
+
+    if (JSON.stringify(originCoord) === JSON.stringify(targetCoord)) {
+      return [originCoord];
+    }
+
     createParentRelations(originCoord, targetCoord);
 
     const path = traverseParentRelations(originCoord, targetCoord);
@@ -58,11 +69,11 @@ const Knight = (board) => {
 
   const knightMoves = (originCoord, targetCoord) => {
     const path = getShortestPath(originCoord, targetCoord);
-    console.log(`=> You made it in ${path.length} moves!  Here's your path:`);
+    console.log(`=> You made it in ${path.length - 1} moves!  Here's your path:`);
     path.forEach((step) => console.log(step));
   };
 
-  return { knightMoves };
+  return { getShortestPath, knightMoves };
 };
 
 export default Knight;

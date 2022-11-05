@@ -4,5 +4,6 @@ import Knight from './knight';
 const board = Board();
 const knight = Knight(board);
 
-knight.knightMoves([0, 0], [3, 7]);
-knight.knightMoves([1, 3], [4, 5]);
+// Examples
+knight.knightMoves([0, 0], [0, 0]);
+knight.knightMoves([7, 7], [1, 2]);
