@@ -13,11 +13,11 @@ const Board = () => {
 
   const squares = createBoard();
 
-  const findSquare = (coord) => squares.filter(
+  const findSquareByCoord = (coord) => squares.find(
     (n) => JSON.stringify(n.coord) === JSON.stringify(coord),
-  )[0];
+  );
 
-  return { squares, findSquare };
+  return { squares, findSquareByCoord };
 };
 
 export default Board;

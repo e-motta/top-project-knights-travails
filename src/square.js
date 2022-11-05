@@ -1,5 +1,8 @@
 const Square = (i, j) => {
+  const id = Number(`${i}${j}`);
+
   const coord = [i, j];
+
   const leaves = [
     i - 1 >= 0 && j - 2 >= 0 ? [i - 1, j - 2] : null,
     i - 2 >= 0 && j - 1 >= 0 ? [i - 2, j - 1] : null,
@@ -11,7 +14,11 @@ const Square = (i, j) => {
     i + 1 <= 7 && j + 2 <= 7 ? [i + 1, j + 2] : null,
   ].filter((n) => n);
 
-  return { coord, leaves };
+  const parent = null;
+
+  return {
+    id, coord, leaves, parent,
+  };
 };
 
 export default Square;
